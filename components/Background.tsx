@@ -4,28 +4,28 @@ import { motion } from 'framer-motion'
 const ORB_CONFIG = [
   {
     id: 'purple',
-    position: { top: '-15%', right: '-10%' },
-    size: 700,
+    position: { top: '-20%', right: '-10%' },
+    size: 800,
     color: '#7c3aed',
-    opacityRange: [0.14, 0.16] as [number, number],
+    opacityRange: [0.40, 0.50] as [number, number],
     scaleRange: [1, 1.12] as [number, number],
     duration: 7,
   },
   {
     id: 'green',
-    position: { bottom: '-10%', left: '-5%' },
-    size: 500,
+    position: { bottom: '-15%', left: '-5%' },
+    size: 600,
     color: '#00ff9f',
-    opacityRange: [0.09, 0.11] as [number, number],
+    opacityRange: [0.25, 0.32] as [number, number],
     scaleRange: [1, 1.08] as [number, number],
     duration: 9,
   },
   {
     id: 'blue',
     position: { top: '-10%', left: '40%' },
-    size: 400,
+    size: 500,
     color: '#60a5fa',
-    opacityRange: [0.05, 0.06] as [number, number],
+    opacityRange: [0.18, 0.24] as [number, number],
     scaleRange: [1, 1.05] as [number, number],
     duration: 11,
   },
@@ -42,7 +42,7 @@ export default function Background() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)',
           backgroundSize: '24px 24px',
         }}
       />
