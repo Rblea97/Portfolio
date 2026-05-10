@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: Props) {
       )}
 
       <div className="flex justify-between items-start gap-2">
-        <h3 className="text-[15px] font-bold text-[var(--color-text)]">{project.name}</h3>
+        <h3 className="text-[18px] font-bold text-[var(--color-text)]">{project.name}</h3>
         <span
           className="text-[10px] font-semibold tracking-wide uppercase px-2 py-1 rounded whitespace-nowrap shrink-0"
           style={BADGE_STYLES[project.roleBadgeColor]}
