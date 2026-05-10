@@ -1,6 +1,5 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { skillGroups } from '@/lib/data/skills'
 
 const COLOR_STYLES: Record<string, React.CSSProperties> = {
@@ -20,16 +19,13 @@ const fadeUp = {
 }
 
 export default function Skills() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px' })
-
   return (
     <section
       id="skills"
       className="py-20 px-[5%]"
       style={{ background: 'var(--color-bg2)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}
     >
-      <motion.div ref={ref} variants={stagger} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+      <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-20px' }}>
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // Skills
         </motion.p>

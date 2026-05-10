@@ -55,7 +55,8 @@ export default function StatsBar() {
       <div ref={ref} className="max-w-[1200px] mx-auto px-[5%] py-2 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 rounded-[10px]"
           style={{

@@ -1,6 +1,5 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 20 },
@@ -19,16 +18,13 @@ const CONTACT_LINKS = [
 ]
 
 export default function About() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px' })
-
   return (
     <section
       id="about"
       className="py-20 px-[5%]"
       style={{ background: 'var(--color-bg2)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}
     >
-      <motion.div ref={ref} variants={stagger} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+      <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-20px' }}>
         <motion.p variants={fadeUpVariant} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // About
         </motion.p>

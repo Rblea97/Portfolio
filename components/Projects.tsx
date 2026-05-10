@@ -1,6 +1,5 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { projects } from '@/lib/data/projects'
 import ProjectCard from '@/components/ProjectCard'
 
@@ -14,14 +13,12 @@ const fadeUp = {
 }
 
 export default function Projects() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px' })
   const featured = projects.filter(p => p.featured)
   const secondary = projects.filter(p => !p.featured)
 
   return (
     <section id="projects" className="py-20 px-[5%]">
-      <motion.div ref={ref} variants={stagger} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+      <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-20px' }}>
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // Projects
         </motion.p>

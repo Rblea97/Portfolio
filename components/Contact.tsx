@@ -1,6 +1,5 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const stagger = {
   hidden: {},
@@ -18,9 +17,6 @@ const LINKS = [
 ]
 
 export default function Contact() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px' })
-
   return (
     <section
       id="contact"
@@ -28,10 +24,10 @@ export default function Contact() {
       style={{ background: 'var(--color-bg2)', borderTop: '1px solid var(--color-border)' }}
     >
       <motion.div
-        ref={ref}
         variants={stagger}
         initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
+        whileInView="visible"
+        viewport={{ once: true, margin: '-20px' }}
         className="max-w-[520px] mx-auto"
       >
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">

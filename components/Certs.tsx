@@ -1,6 +1,5 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { certs } from '@/lib/data/certs'
 
 const stagger = {
@@ -13,12 +12,9 @@ const fadeUp = {
 }
 
 export default function Certs() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-20px' })
-
   return (
     <section id="certs" className="py-20 px-[5%]">
-      <motion.div ref={ref} variants={stagger} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+      <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-20px' }}>
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // Certifications
         </motion.p>
