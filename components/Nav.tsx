@@ -34,7 +34,7 @@ export default function Nav() {
           <a
             key={id}
             href={`#${id}`}
-            className="text-xs font-medium tracking-wide capitalize transition-colors duration-200"
+            className="text-xs font-medium tracking-wide capitalize transition-colors duration-200 h-[54px] flex items-center"
             style={{ color: activeId === id ? 'var(--color-green)' : 'var(--color-text3)' }}
           >
             {id}
@@ -42,7 +42,7 @@ export default function Nav() {
         ))}
         <a
           href="#contact"
-          className="font-mono text-[11px] px-3 py-1 rounded border transition-colors duration-200"
+          className="font-mono text-[11px] px-3 py-[11px] rounded border transition-colors duration-200"
           style={{
             color: 'var(--color-green)',
             borderColor: 'var(--color-green-dim)',
