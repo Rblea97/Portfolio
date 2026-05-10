@@ -34,6 +34,95 @@ const badgeVariant = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
 }
 
+// ── Terminal window ──────────────────────────────────────────────────────────
+type LineColor = 'cmd' | 'ok' | 'status' | 'blank'
+
+const TERMINAL_LINES: Array<{ text: string; color: LineColor }> = [
+  { text: '$ python analyze_lab.py --summary', color: 'cmd' },
+  { text: '', color: 'blank' },
+  { text: '[✓] AD domains configured ........  3', color: 'ok' },
+  { text: '[✓] Intune policies deployed .....  12', color: 'ok' },
+  { text: '[✓] SIEM alerts triaged ..........  36', color: 'ok' },
+  { text: '[✓] MITRE ATT&CK scenarios .......   5', color: 'ok' },
+  { text: '[✓] ML classifier accuracy .. 98.82%', color: 'ok' },
+  { text: '[✓] Test coverage ...............  98%', color: 'ok' },
+  { text: '', color: 'blank' },
+  { text: '[!] Status: READY TO CONTRIBUTE', color: 'status' },
+]
+
+const LINE_COLORS: Record<LineColor, string> = {
+  cmd:    'var(--color-text4)',
+  ok:     'var(--color-green)',
+  blank:  'transparent',
+  status: 'var(--color-amber)',
+}
+
+const termContainer = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 1.0 } },
+}
+
+const termLine = {
+  hidden:  { opacity: 0, x: -6 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.25 } },
+}
+
+function TerminalWindow() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.7 }}
+      className="w-full max-w-[420px] rounded-[10px] overflow-hidden shrink-0"
+      style={{
+        background: '#0d1117',
+        border: '1px solid var(--color-border)',
+        boxShadow: '0 24px 64px #00000060, 0 0 0 1px #ffffff06',
+      }}
+      aria-hidden="true"
+    >
+      {/* Window chrome */}
+      <div
+        className="flex items-center gap-[6px] px-4 py-[10px]"
+        style={{ background: '#161b22', borderBottom: '1px solid var(--color-border)' }}
+      >
+        <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+        <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+        <span className="w-3 h-3 rounded-full bg-[#28ca41]" />
+        <span className="ml-3 font-mono text-[11px] text-[var(--color-text4)]">
+          ~/rblea97 — zsh
+        </span>
+      </div>
+
+      {/* Terminal body */}
+      <motion.div
+        variants={termContainer}
+        initial="hidden"
+        animate="visible"
+        className="p-5 font-mono text-[12px] leading-relaxed"
+      >
+        {TERMINAL_LINES.map((line, i) => (
+          <motion.div
+            key={i}
+            variants={termLine}
+            className="min-h-[1.8em]"
+            style={{ color: LINE_COLORS[line.color] }}
+          >
+            {line.text}
+            {i === TERMINAL_LINES.length - 1 && (
+              <span
+                className="inline-block w-[6px] h-[13px] ml-1 cursor-blink align-middle"
+                style={{ background: 'var(--color-amber)', opacity: 0.8 }}
+              />
+            )}
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
+  )
+}
+
+// ── Hero ─────────────────────────────────────────────────────────────────────
 export default function Hero() {
   const { displayed, done } = useTypewriter(ROLE_TEXT, 38, 600)
 
@@ -52,133 +141,144 @@ export default function Hero() {
         style={{ background: 'radial-gradient(circle, #00ff9f08 0%, transparent 65%)' }}
       />
 
-      <div className="relative max-w-[680px]">
-        {/* Terminal crumb */}
-        <motion.div
-          variants={fadeUp}
-          custom={0}
-          initial="hidden"
-          animate="visible"
-          className="font-mono text-[11px] text-[var(--color-text4)] mb-6 flex items-center gap-2"
-        >
-          <span className="text-[var(--color-green)] opacity-50">❯</span>
-          <span>~/portfolio</span>
-          <span className="text-[var(--color-text3)]">cat about.md</span>
-          <span
-            className="inline-block w-[6px] h-[11px] bg-[var(--color-green)] opacity-70 cursor-blink"
-            aria-hidden="true"
-          />
-        </motion.div>
+      {/* Two-column layout: text left, terminal right */}
+      <div className="relative w-full max-w-[1200px] flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
-        {/* Name */}
-        <motion.h1
-          variants={fadeUp}
-          custom={0.1}
-          initial="hidden"
-          animate="visible"
-          className="text-[clamp(40px,8vw,64px)] font-extrabold tracking-[-3px] leading-[0.95] mb-2"
-        >
-          Richard{' '}
-          <span className="text-[var(--color-green)]">Blea</span>
-        </motion.h1>
-
-        {/* Typewriter role line */}
-        <motion.div
-          variants={fadeUp}
-          custom={0.2}
-          initial="hidden"
-          animate="visible"
-          className="font-mono text-[11px] text-[var(--color-purple)] tracking-[2.5px] uppercase mb-6"
-          aria-label={ROLE_TEXT}
-        >
-          {displayed}
-          {!done && (
+        {/* Left: text content */}
+        <div className="max-w-[560px] w-full">
+          {/* Terminal crumb */}
+          <motion.div
+            variants={fadeUp}
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            className="font-mono text-[11px] text-[var(--color-text4)] mb-6 flex items-center gap-2"
+          >
+            <span className="text-[var(--color-green)] opacity-50">❯</span>
+            <span>~/portfolio</span>
+            <span className="text-[var(--color-text3)]">cat about.md</span>
             <span
-              className="inline-block w-[6px] h-[11px] bg-[var(--color-purple)] opacity-70 cursor-blink align-middle ml-[2px]"
+              className="inline-block w-[6px] h-[11px] bg-[var(--color-green)] opacity-70 cursor-blink"
               aria-hidden="true"
             />
-          )}
-        </motion.div>
+          </motion.div>
 
-        {/* Tagline */}
-        <motion.p
-          variants={fadeUp}
-          custom={0.3}
-          initial="hidden"
-          animate="visible"
-          className="text-[15px] text-[var(--color-text2)] max-w-[520px] leading-[1.7] mb-7"
-        >
-          CS graduate with hands-on{' '}
-          <strong className="text-[var(--color-text)] font-semibold">IT experience</strong>
-          {' '}— Active Directory, Intune MDM, M365, and PowerShell automation. Security fundamentals
-          built in: I&apos;ve run real attack scenarios in a Wazuh SIEM lab to understand what IT
-          teams are defending against.{' '}
-          <strong className="text-[var(--color-text)] font-semibold">
-            Available for IT support and infrastructure roles.
-          </strong>
-        </motion.p>
+          {/* Name */}
+          <motion.h1
+            variants={fadeUp}
+            custom={0.1}
+            initial="hidden"
+            animate="visible"
+            className="text-[clamp(40px,8vw,64px)] font-extrabold tracking-[-3px] leading-[0.95] mb-2"
+          >
+            Richard{' '}
+            <span className="text-[var(--color-green)]">Blea</span>
+          </motion.h1>
 
-        {/* Badges */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-wrap gap-2 mb-8"
-        >
-          {BADGES.map(badge => (
-            <motion.span
-              key={badge.label}
-              variants={badgeVariant}
-              className="px-[10px] py-1 rounded text-[11px] font-medium"
-              style={BADGE_STYLES[badge.color]}
+          {/* Typewriter role line */}
+          <motion.div
+            variants={fadeUp}
+            custom={0.2}
+            initial="hidden"
+            animate="visible"
+            className="font-mono text-[11px] text-[var(--color-purple)] tracking-[2.5px] uppercase mb-6"
+            aria-label={ROLE_TEXT}
+          >
+            {displayed}
+            {!done && (
+              <span
+                className="inline-block w-[6px] h-[11px] bg-[var(--color-purple)] opacity-70 cursor-blink align-middle ml-[2px]"
+                aria-hidden="true"
+              />
+            )}
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.p
+            variants={fadeUp}
+            custom={0.3}
+            initial="hidden"
+            animate="visible"
+            className="text-[15px] text-[var(--color-text2)] max-w-[520px] leading-[1.7] mb-7"
+          >
+            CS graduate with hands-on{' '}
+            <strong className="text-[var(--color-text)] font-semibold">IT experience</strong>
+            {' '}— Active Directory, Intune MDM, M365, and PowerShell automation. Security fundamentals
+            built in: I&apos;ve run real attack scenarios in a Wazuh SIEM lab to understand what IT
+            teams are defending against.{' '}
+            <strong className="text-[var(--color-text)] font-semibold">
+              Available for IT support and infrastructure roles.
+            </strong>
+          </motion.p>
+
+          {/* Badges */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-wrap gap-2 mb-8"
+          >
+            {BADGES.map(badge => (
+              <motion.span
+                key={badge.label}
+                variants={badgeVariant}
+                className="px-[10px] py-1 rounded text-[11px] font-medium"
+                style={BADGE_STYLES[badge.color]}
+              >
+                {badge.color === 'blue' && (
+                  <span
+                    className="inline-block w-[5px] h-[5px] rounded-full bg-[var(--color-blue)] mr-[5px] align-middle"
+                    style={{ boxShadow: '0 0 5px var(--color-blue)' }}
+                  />
+                )}
+                {badge.label}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            variants={fadeUp}
+            custom={0.5}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-wrap gap-3 items-center"
+          >
+            <a
+              href="#projects"
+              className="px-6 py-3 rounded-md text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #7c3aed, #6d28d9)' }}
             >
-              {badge.color === 'blue' && (
-                <span
-                  className="inline-block w-[5px] h-[5px] rounded-full bg-[var(--color-blue)] mr-[5px] align-middle"
-                  style={{ boxShadow: '0 0 5px var(--color-blue)' }}
-                />
-              )}
-              {badge.label}
-            </motion.span>
-          ))}
-        </motion.div>
+              View Projects
+            </a>
+            <a
+              href="https://github.com/Rblea97"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-md font-mono text-[11px] transition-colors hover:border-[var(--color-green)]"
+              style={{
+                color: 'var(--color-green)',
+                border: '1px solid var(--color-green-dim)',
+              }}
+            >
+              <span className="text-[var(--color-text4)]">$ </span>open_github.sh
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="hidden sm:block px-5 py-3 rounded-md text-sm text-[var(--color-text3)] transition-colors hover:text-[var(--color-text2)]"
+              style={{ border: '1px solid var(--color-border)' }}
+            >
+              Resume ↓
+            </a>
+          </motion.div>
+        </div>
 
-        {/* CTAs */}
-        <motion.div
-          variants={fadeUp}
-          custom={0.5}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-wrap gap-3 items-center"
-        >
-          <a
-            href="#projects"
-            className="px-6 py-3 rounded-md text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #7c3aed, #6d28d9)' }}
-          >
-            View Projects
-          </a>
-          <a
-            href="https://github.com/Rblea97"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-3 rounded-md font-mono text-[11px] transition-colors hover:border-[var(--color-green)]"
-            style={{
-              color: 'var(--color-green)',
-              border: '1px solid var(--color-green-dim)',
-            }}
-          >
-            <span className="text-[var(--color-text4)]">$ </span>open_github.sh
-          </a>
-          <a
-            href="/resume.pdf"
-            download
-            className="hidden sm:block px-5 py-3 rounded-md text-sm text-[var(--color-text3)] transition-colors hover:text-[var(--color-text2)]"
-            style={{ border: '1px solid var(--color-border)' }}
-          >
-            Resume ↓
-          </a>
-        </motion.div>
+        {/* Right: terminal window — hides below lg breakpoint stacks above */}
+        <div className="w-full lg:w-auto flex justify-center lg:justify-end">
+          <TerminalWindow />
+        </div>
+
       </div>
     </section>
   )

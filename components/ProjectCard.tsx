@@ -16,6 +16,20 @@ const LINK_STYLES: Record<string, React.CSSProperties> = {
   docs:   { color: 'var(--color-blue)', border: '1px solid #60a5fa22' },
 }
 
+function previewLineColor(line: string): string {
+  if (line.startsWith('$'))       return 'var(--color-text4)'
+  if (line.startsWith('[OK]') || line.startsWith('[DONE]') || line.startsWith('[✓]'))
+                                  return 'var(--color-green)'
+  if (line.startsWith('[ALERT]') || line.startsWith('[ERROR]'))
+                                  return '#f87171'
+  if (line.startsWith('[WARN]') || line.startsWith('[ML]') || line.startsWith('[IOC]') || line.startsWith('[RANK]'))
+                                  return 'var(--color-amber)'
+  if (line.startsWith('[INFO]') || line.startsWith('[VIEW]') || line.startsWith('[SCORE]'))
+                                  return 'var(--color-blue)'
+  if (line.startsWith('[TIP]'))   return 'var(--color-text3)'
+  return 'var(--color-text3)'
+}
+
 interface Props {
   project: Project
 }
@@ -32,6 +46,19 @@ export default function ProjectCard({ project }: Props) {
         transition: { duration: 0.2 },
       }}
     >
+      {/* Mini terminal preview */}
+      {project.previewLines && (
+        <div
+          className="rounded-[6px] p-3 font-mono text-[11px] leading-[1.75] overflow-hidden -mx-0"
+          style={{ background: '#0a0d16', border: '1px solid var(--color-border)' }}
+          aria-hidden="true"
+        >
+          {project.previewLines.map((line, i) => (
+            <div key={i} style={{ color: previewLineColor(line) }}>{line}</div>
+          ))}
+        </div>
+      )}
+
       <div className="flex justify-between items-start gap-2">
         <h3 className="text-[15px] font-bold text-[var(--color-text)]">{project.name}</h3>
         <span

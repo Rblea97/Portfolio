@@ -13,6 +13,7 @@ export interface Project {
   roleBadgeColor: 'green' | 'purple' | 'blue' | 'amber'
   links: ProjectLink[]
   featured: boolean
+  previewLines?: string[]
 }
 
 export interface SkillGroup {

@@ -13,6 +13,12 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/Rblea97/SOC-Lab', variant: 'github' },
     ],
     featured: true,
+    previewLines: [
+      '$ wazuh-alert --triage',
+      '[ALERT] brute_force detected × 36',
+      '[INFO]  MITRE T1110 → confirmed',
+      '[OK]    no credential compromise',
+    ],
   },
   {
     id: 'phishing-detector',
@@ -28,6 +34,12 @@ export const projects: Project[] = [
       { label: 'Demo Video', url: 'https://youtu.be/wYcv8Ve5-Sw', variant: 'video' },
     ],
     featured: true,
+    previewLines: [
+      '$ phish-scan --input email.eml',
+      '[WARN] SPF: FAIL  DKIM: PASS',
+      '[ML]   confidence: 98.82% PHISHING',
+      '[IOC]  T1566.001 → flagged',
+    ],
   },
   {
     id: 'ridgeline-it',
@@ -41,6 +53,12 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/Rblea97/ridgeline-it', variant: 'github' },
     ],
     featured: false,
+    previewLines: [
+      '$ ad-audit --domain RIDGELINE',
+      '[OK]  domain controller: online',
+      '[OK]  12 policies synced',
+      '[OK]  MDM enrollment: complete',
+    ],
   },
   {
     id: 'password-analyzer',
@@ -54,6 +72,12 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/Rblea97/password-strength-analyzer', variant: 'github' },
     ],
     featured: false,
+    previewLines: [
+      '$ analyze-password --input "P@ssw0rd!"',
+      '[SCORE] entropy: 42.3 bits',
+      '[OK]    strength: STRONG',
+      '[TIP]   add length for max score',
+    ],
   },
   {
     id: 'algorithm-visualizer',
@@ -67,5 +91,11 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/Rblea97/Algorithm-Visualizer', variant: 'github' },
     ],
     featured: false,
+    previewLines: [
+      '$ python visualizer.py --algo quicksort',
+      '[INFO]  items: 20  comparisons: 52',
+      '[DONE]  sorted in 0.003s',
+      '[VIEW]  tkinter window opened',
+    ],
   },
 ]
