@@ -14,7 +14,7 @@ const fadeUp = {
 
 export default function Certs() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '-20px' })
 
   return (
     <section id="certs" className="py-20 px-[5%]">

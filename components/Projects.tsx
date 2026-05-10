@@ -15,7 +15,7 @@ const fadeUp = {
 
 export default function Projects() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '-20px' })
   const featured = projects.filter(p => p.featured)
   const secondary = projects.filter(p => !p.featured)
 

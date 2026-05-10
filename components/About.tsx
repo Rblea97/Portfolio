@@ -20,7 +20,7 @@ const CONTACT_LINKS = [
 
 export default function About() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '-20px' })
 
   return (
     <section
