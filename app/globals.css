@@ -50,3 +50,15 @@ body {
   50% { opacity: 0; }
 }
 .cursor-blink { animation: blink 1.2s step-end infinite; }
+
+/* ── Reduced motion: kill all transforms and animations ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Ensure Framer Motion elements are immediately visible */
+  [style*="opacity: 0"] { opacity: 1 !important; }
+  [style*="transform: translateY"] { transform: none !important; }
+}
