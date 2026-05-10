@@ -40,10 +40,10 @@ export default function ProjectCard({ project }: Props) {
       className="flex flex-col gap-3 p-6 rounded-[10px] h-full"
       style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
       whileHover={{
-        y: -4,
+        y: -6,
         borderColor: 'var(--color-border2)',
         boxShadow: '0 8px 32px #00ff9f08',
-        transition: { duration: 0.2 },
+        transition: { type: 'spring', stiffness: 400, damping: 30 },
       }}
     >
       {/* Mini terminal preview */}
