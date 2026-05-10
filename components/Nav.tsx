@@ -22,7 +22,7 @@ export default function Nav() {
       {/* Logo */}
       <a
         href="#"
-        className="font-mono font-bold text-[var(--color-green)] text-sm tracking-wide"
+        className="font-mono font-bold text-[var(--color-green)] text-sm tracking-wide h-[54px] flex items-center"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <span className="text-[var(--color-text4)]">~/</span>rblea97
@@ -42,7 +42,7 @@ export default function Nav() {
         ))}
         <a
           href="#contact"
-          className="font-mono text-[11px] px-3 py-[11px] rounded border transition-colors duration-200"
+          className="font-mono text-[11px] px-3 py-[13px] rounded border transition-colors duration-200"
           style={{
             color: 'var(--color-green)',
             borderColor: 'var(--color-green-dim)',
