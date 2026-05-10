@@ -32,8 +32,9 @@ export default function Contact() {
           Available immediately for IT support and infrastructure roles.
         </motion.p>
         <motion.p variants={fadeUp} className="text-[15px] text-[var(--color-text2)] leading-[1.7] mb-8 max-w-[520px] mx-auto">
-          Security fundamentals are built in — I know what you&apos;re defending against, not just
-          how to keep the lights on. If you want someone who contributes from day one, reach out.
+          Security awareness is how I approach IT work — not a separate track. If you want
+          someone who keeps systems running <em>and</em> knows why the configurations matter,
+          reach out.
         </motion.p>
 
         <motion.div variants={stagger} className="flex flex-wrap justify-center gap-4">

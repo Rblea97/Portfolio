@@ -2,21 +2,21 @@ import type { SkillGroup } from '@/lib/types'
 
 export const skillGroups: SkillGroup[] = [
   {
-    id: 'security',
-    label: 'Security & Blue Team',
-    color: 'green',
+    id: 'it',
+    label: 'Systems & Infrastructure',
+    color: 'blue',
     skills: [
-      'Wazuh SIEM', 'MITRE ATT&CK', 'Sigma Rules', 'Incident Response',
-      'Threat Detection', 'IOC Extraction', 'Metasploit', 'Nmap', 'Hydra', 'Wireshark',
+      'Active Directory', 'Windows Server', 'Intune MDM', 'Microsoft 365',
+      'Endpoint Hardening', 'Group Policy', 'VirtualBox', 'Linux / Unix',
     ],
   },
   {
-    id: 'it',
-    label: 'IT & Infrastructure',
-    color: 'blue',
+    id: 'security',
+    label: 'Identity, Access & Security Ops',
+    color: 'green',
     skills: [
-      'Active Directory', 'Intune MDM', 'Microsoft 365', 'PowerShell',
-      'VirtualBox', 'Linux / Unix', 'Windows Server', 'Help Desk',
+      'Least-Privilege Provisioning', 'MFA Enforcement', 'Patch Management',
+      'Wazuh SIEM', 'Wireshark', 'Nmap', 'Incident Triage', 'MITRE ATT&CK',
     ],
   },
   {

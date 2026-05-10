@@ -12,23 +12,22 @@ const BIO_PARAGRAPHS = [
   <>
     I&apos;m a{' '}
     <strong className="text-[var(--color-text)] font-semibold">CS graduate from CU Denver</strong>
-    {' '}(Cybersecurity &amp; Secure Computing, May 2026) focused on IT infrastructure. I&apos;ve
-    built the same environments IT teams operate every day — Active Directory domains, Intune MDM
-    device management, M365 tenant configuration, and PowerShell automation for user provisioning
-    and group policy.
+    {' '}(May 2026) focused on IT support and infrastructure. I&apos;ve built the same environments
+    IT teams operate every day — Active Directory domains, Intune MDM device management,
+    M365 tenant configuration, and PowerShell automation for user provisioning and group policy.
   </>,
   <>
-    My degree included a security concentration, which adds real depth:{' '}
-    <strong className="text-[var(--color-text)] font-semibold">I understand what attackers do at a technical level</strong>
-    {' '}— how they move through networks, what SIEM alerts look like, and why certain
-    configurations create risk. That context makes every AD permission and firewall rule more
-    deliberate, not just a ticket to close.
+    My training covers security fundamentals, which makes me{' '}
+    <strong className="text-[var(--color-text)] font-semibold">better at IT work — not distracted from it.</strong>
+    {' '}Patch prioritization, least-privilege access reviews, endpoint hardening, phishing triage —
+    these are IT support functions. Understanding the threat side means I do them deliberately,
+    not just mechanically.
   </>,
   <>
     I&apos;m looking for{' '}
-    <strong className="text-[var(--color-text)] font-semibold">IT support roles</strong>
-    {' '}where hands-on lab experience translates directly. The security depth is a differentiator
-    you get for free.
+    <strong className="text-[var(--color-text)] font-semibold">IT support and infrastructure roles</strong>
+    {' '}where I can contribute from day one. Security awareness is how I approach the work —
+    not where I&apos;m headed next.
   </>,
 ]
 
