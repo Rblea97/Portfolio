@@ -20,14 +20,20 @@ describe('motion config', () => {
     expect((fadeUp.hidden as { opacity: number }).opacity).toBe(0)
   })
 
-  it('fadeIn has hidden and visible keys', () => {
+  it('fadeIn hidden has opacity 0', () => {
     expect(fadeIn.hidden).toBeDefined()
     expect(fadeIn.visible).toBeDefined()
+    expect((fadeIn.hidden as { opacity: number }).opacity).toBe(0)
   })
 
   it('stagger visible has staggerChildren 0.08', () => {
     const vis = stagger.visible as { transition: { staggerChildren: number } }
     expect(vis.transition.staggerChildren).toBe(0.08)
+  })
+
+  it('stagger visible has delayChildren 0.1', () => {
+    const vis = stagger.visible as { transition: { delayChildren: number } }
+    expect(vis.transition.delayChildren).toBe(0.1)
   })
 
   it('cardHover lifts by -6', () => {

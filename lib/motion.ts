@@ -1,4 +1,4 @@
-import type { Variants, Transition } from 'framer-motion'
+import type { Variants, Transition, TargetAndTransition } from 'framer-motion'
 
 export const springFast: Transition = {
   type: 'spring',
@@ -33,7 +33,7 @@ export const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 }
 
-export const cardHover = {
+export const cardHover: TargetAndTransition = {
   y: -6,
   borderColor: 'var(--color-border2)',
   transition: springFast,
