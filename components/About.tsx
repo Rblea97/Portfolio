@@ -26,8 +26,9 @@ const BIO_PARAGRAPHS = [
   <>
     I&apos;m looking for{' '}
     <strong className="text-[var(--color-text)] font-semibold">IT support and infrastructure roles</strong>
-    {' '}where I can contribute from day one. Security awareness is how I approach the work —
-    not where I&apos;m headed next.
+    {' '}where I can contribute from day one. Security-aware IT professionals handle more
+    — faster triage, fewer escalations, configurations that don&apos;t create problems later.
+    That&apos;s the value.
   </>,
 ]
 
