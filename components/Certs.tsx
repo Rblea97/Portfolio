@@ -1,24 +1,22 @@
 'use client'
 import { motion } from 'framer-motion'
+import { fadeUp, stagger } from '@/lib/motion'
 import { certs } from '@/lib/data/certs'
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-}
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-}
 
 export default function Certs() {
   return (
-    <section id="certs" className="py-20 px-[5%]">
-      <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-20px' }}>
+    <section id="certs" className="py-28 px-[5%]">
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-20px' }}
+        className="max-w-5xl mx-auto"
+      >
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // Certifications
         </motion.p>
-        <motion.h2 variants={fadeUp} className="text-[32px] font-extrabold tracking-[-1px] mb-10">
+        <motion.h2 variants={fadeUp} className="font-extrabold tracking-[-1px] mb-10" style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>
           In <span className="text-[var(--color-green)]">Progress</span>
         </motion.h2>
 
@@ -32,11 +30,7 @@ export default function Certs() {
             >
               <div
                 className="font-mono text-[18px] font-bold w-12 h-12 rounded-[8px] flex items-center justify-center shrink-0"
-                style={{
-                  color: 'var(--color-amber)',
-                  background: '#f59e0b10',
-                  border: '1px solid #f59e0b22',
-                }}
+                style={{ color: 'var(--color-amber)', background: '#f59e0b10', border: '1px solid #f59e0b22' }}
               >
                 {cert.shortName}
               </div>

@@ -1,14 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-}
+import { fadeUp, stagger } from '@/lib/motion'
 
 const LINKS = [
   { icon: '✉', label: 'richard.blea97@gmail.com', href: 'mailto:richard.blea97@gmail.com' },
@@ -20,7 +12,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 px-[5%] text-center"
+      className="py-28 px-[5%] text-center"
       style={{ background: 'var(--color-bg2)', borderTop: '1px solid var(--color-border)' }}
     >
       <motion.div
@@ -28,18 +20,20 @@ export default function Contact() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-20px' }}
-        className="max-w-[520px] mx-auto"
+        className="max-w-5xl mx-auto"
       >
         <motion.p variants={fadeUp} className="font-mono text-[11px] text-[var(--color-text4)] tracking-[3px] uppercase mb-2">
           // Contact
         </motion.p>
-        <motion.h2 variants={fadeUp} className="text-[32px] font-extrabold tracking-[-1px] mb-6">
+        <motion.h2 variants={fadeUp} className="font-extrabold tracking-[-1px] mb-2" style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>
           Let&apos;s <span className="text-[var(--color-green)]">Connect</span>
         </motion.h2>
-        <motion.p variants={fadeUp} className="text-[15px] text-[var(--color-text2)] leading-[1.7] mb-8">
-          Available for IT support and infrastructure roles. Security fundamentals are built
-          in — I know what you&apos;re defending against, not just how to keep the lights on.
-          If you want someone who contributes from day one, reach out.
+        <motion.p variants={fadeUp} className="text-[14px] text-[var(--color-text3)] mb-6">
+          Available immediately for IT support and infrastructure roles.
+        </motion.p>
+        <motion.p variants={fadeUp} className="text-[15px] text-[var(--color-text2)] leading-[1.7] mb-8 max-w-[520px] mx-auto">
+          Security fundamentals are built in — I know what you&apos;re defending against, not just
+          how to keep the lights on. If you want someone who contributes from day one, reach out.
         </motion.p>
 
         <motion.div variants={stagger} className="flex flex-wrap justify-center gap-4">
