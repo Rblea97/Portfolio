@@ -13,17 +13,19 @@ export default function Home() {
   return (
     <>
       <Background />
-      <Nav />
-      <main className="pt-[54px]">
-        <Hero />
-        <StatsBar />
-        <About />
-        <Projects />
-        <Skills />
-        <Certs />
-        <Contact />
-      </main>
-      <Footer />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Nav />
+        <main className="pt-[54px]">
+          <Hero />
+          <StatsBar />
+          <About />
+          <Projects />
+          <Skills />
+          <Certs />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
