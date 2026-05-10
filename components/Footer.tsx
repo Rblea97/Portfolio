@@ -6,7 +6,7 @@ export default function Footer() {
     >
       <span className="font-mono text-[11px] text-[var(--color-text4)]">
         <span className="text-[var(--color-green)]">~/</span>rblea97
-        {' '}— Built with Next.js 16 · Tailwind v4 · Deployed on Vercel
+        {' '}— Built with Next.js 15 · Tailwind v4 · Deployed on Vercel
       </span>
       <span className="font-mono text-[11px] text-[var(--color-text4)]">
         © 2026 Richard Blea
