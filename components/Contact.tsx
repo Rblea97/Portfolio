@@ -13,7 +13,7 @@ export default function Contact() {
     <section
       id="contact"
       className="py-28 px-[5%] text-center"
-      style={{ background: 'var(--color-bg2)', borderTop: '1px solid var(--color-border)' }}
+      style={{ background: 'rgba(10,13,22,0.72)', borderTop: '1px solid var(--color-border)' }}
     >
       <motion.div
         variants={stagger}
