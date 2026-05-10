@@ -1,0 +1,42 @@
+RICHARD BLEA
+richard.blea97@gmail.com | (720) 269-9787
+linkedin.com/in/richard-blea-748914159 | github.com/Rblea97 | [portfolio URL]
+
+SUMMARY
+CS graduate (Cybersecurity & Secure Computing, CU Denver, May 2026) with hands-on experience in SOC operations, blue team detection engineering, and IT infrastructure. Built a 4-VM Wazuh SIEM home lab with 5 validated MITRE ATT&CK scenarios and a live-deployed AI phishing detection system (98.82% accuracy, 98% test coverage). Experienced with Active Directory, Intune MDM, Microsoft 365, PowerShell, and full-stack development. Pursuing CompTIA A+ and Security+.
+
+CERTIFICATIONS
+CompTIA A+ -- In Progress
+CompTIA Security+ (DoD 8570 compliant) -- In Progress
+
+TECHNICAL SKILLS
+Security: Wazuh SIEM, MITRE ATT&CK, Sigma Rules, Incident Response, Threat Detection, IOC Extraction, Metasploit, Nmap, Hydra, Wireshark
+IT & Infrastructure: Active Directory, Intune MDM, Microsoft 365, PowerShell, VirtualBox, Linux/Unix, Windows Server, Help Desk
+Languages & Frameworks: Python, TypeScript, React 19, FastAPI, JavaScript, HTML/CSS, Bash, C/C++
+Tools: GitHub Actions CI, Docker, Git, pytest, REST APIs, VS Code
+
+PROJECTS
+
+SOC Home Lab | github.com/Rblea97/SOC-Lab
+- Deployed a 4-VM VirtualBox environment (Kali, Metasploitable, Ubuntu, Wazuh) simulating end-to-end SOC analyst workflows
+- Validated 5 MITRE ATT&CK scenarios (brute force, FTP exploit CVE-2011-2523, sudo abuse, web shell, port scan) with machine-readable JSON alert evidence
+- Triaged 36 simultaneous Wazuh brute-force alerts across 4 parallel Hydra sessions; confirmed no credential compromise via rule correlation
+- Built Python alert enrichment pipeline: risk scoring, MITRE context, triage scoring, and Sigma-to-Wazuh XML conversion; CI-gated with pytest and GitHub Actions
+
+AI Phishing Detector (Live) | phishing-detector-ui-s3bf.onrender.com | github.com/Rblea97/ai-phishing-detector-portfolio
+- Built full-stack blue team email triage tool with 98.82% ML classifier accuracy and LLM-powered threat reasoning (MITRE ATT&CK T1566 mapped)
+- Achieved 99.80% legitimate-class recall (~0.20% false positive rate), minimizing analyst alert fatigue; 98% test coverage across backend and frontend
+- Implemented SPF/DKIM/DMARC header analysis and structured SIEM output (Splunk/Elastic/Azure Sentinel compatible)
+- Deployed to production; CI/CD via GitHub Actions with CodeQL security scanning
+
+Ridgeline IT Lab | github.com/Rblea97/ridgeline-it
+- Built simulated on-prem and cloud IT environment: Active Directory domain, Intune MDM device management, and M365 tenant configuration
+- Automated user provisioning, group policy, and help desk scenarios via PowerShell scripts
+
+Password Strength Analyzer | github.com/Rblea97/password-strength-analyzer
+- Real-time entropy-based password analyzer with 5-segment visual strength meter; built with TypeScript, React 19, and Vite 8
+
+EDUCATION
+University of Colorado Denver -- May 2026
+Bachelor of Science, Computer Science
+Concentration: Cybersecurity & Secure Computing
