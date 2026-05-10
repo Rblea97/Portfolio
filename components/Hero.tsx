@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useTypewriter } from '@/lib/hooks/useTypewriter'
+import { springMedium, springGentle } from '@/lib/motion'
 
 const ROLE_TEXT = '// CYBERSECURITY & SECURE COMPUTING · CU DENVER · MAY 2026'
 
@@ -19,14 +20,9 @@ const BADGE_STYLES: Record<string, React.CSSProperties> = {
   amber:  { background: '#f59e0b0c', color: 'var(--color-amber)', border: '1px solid #f59e0b22' },
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay } }),
-}
-
-const staggerContainer = {
+const badgeStagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.7 } },
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.5 } },
 }
 
 const badgeVariant = {
@@ -34,7 +30,6 @@ const badgeVariant = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
 }
 
-// ── Terminal window ──────────────────────────────────────────────────────────
 type LineColor = 'cmd' | 'ok' | 'status' | 'blank'
 
 const TERMINAL_LINES: Array<{ text: string; color: LineColor }> = [
@@ -72,16 +67,15 @@ function TerminalWindow() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.7 }}
+      transition={{ ...springGentle, delay: 0.7 }}
       className="w-full max-w-[420px] rounded-[10px] overflow-hidden shrink-0"
       style={{
         background: '#0d1117',
         border: '1px solid var(--color-border)',
-        boxShadow: '0 24px 64px #00000060, 0 0 0 1px #ffffff06',
+        boxShadow: '0 0 40px #7c3aed18, 0 24px 64px #00000060',
       }}
       aria-hidden="true"
     >
-      {/* Window chrome */}
       <div
         className="flex items-center gap-[6px] px-4 py-[10px]"
         style={{ background: '#161b22', borderBottom: '1px solid var(--color-border)' }}
@@ -94,7 +88,6 @@ function TerminalWindow() {
         </span>
       </div>
 
-      {/* Terminal body */}
       <motion.div
         variants={termContainer}
         initial="hidden"
@@ -122,36 +115,48 @@ function TerminalWindow() {
   )
 }
 
-// ── Hero ─────────────────────────────────────────────────────────────────────
 export default function Hero() {
   const { displayed, done } = useTypewriter(ROLE_TEXT, 38, 600)
 
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] flex items-center px-[5%] overflow-hidden"
+      className="relative min-h-[92vh] flex items-center px-[5%] overflow-hidden"
     >
-      {/* Radial gradient glows */}
-      <div
-        className="pointer-events-none absolute -top-32 -right-20 w-[500px] h-[500px] rounded-full"
-        style={{ background: 'radial-gradient(circle, #7c3aed14 0%, transparent 65%)' }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-20 left-[5%] w-[320px] h-[320px] rounded-full"
-        style={{ background: 'radial-gradient(circle, #00ff9f08 0%, transparent 65%)' }}
-      />
-
-      {/* Two-column layout: text left, terminal right */}
       <div className="relative w-full max-w-[1200px] flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
-        {/* Left: text content */}
         <div className="max-w-[560px] w-full">
+
+          {/* Availability badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium mb-5"
+            style={{
+              background: '#00ff9f0d',
+              border: '1px solid #00ff9f33',
+              color: 'var(--color-green)',
+            }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span
+                className="absolute inline-flex h-full w-full rounded-full ring-pulse"
+                style={{ background: 'var(--color-green)', opacity: 0.6 }}
+              />
+              <span
+                className="relative inline-flex rounded-full h-2 w-2"
+                style={{ background: 'var(--color-green)' }}
+              />
+            </span>
+            Available for IT Support Roles
+          </motion.div>
+
           {/* Terminal crumb */}
           <motion.div
-            variants={fadeUp}
-            custom={0}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0.1 }}
             className="font-mono text-[11px] text-[var(--color-text4)] mb-6 flex items-center gap-2"
           >
             <span className="text-[var(--color-green)] opacity-50">❯</span>
@@ -165,10 +170,9 @@ export default function Hero() {
 
           {/* Name */}
           <motion.h1
-            variants={fadeUp}
-            custom={0.1}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0.2 }}
             className="text-[clamp(40px,8vw,64px)] font-extrabold tracking-[-3px] leading-[0.95] mb-2"
           >
             Richard{' '}
@@ -177,10 +181,9 @@ export default function Hero() {
 
           {/* Typewriter role line */}
           <motion.div
-            variants={fadeUp}
-            custom={0.2}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0.3 }}
             className="font-mono text-[11px] text-[var(--color-purple)] tracking-[2.5px] uppercase mb-6"
             aria-label={ROLE_TEXT}
           >
@@ -195,10 +198,9 @@ export default function Hero() {
 
           {/* Tagline */}
           <motion.p
-            variants={fadeUp}
-            custom={0.3}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0.4 }}
             className="text-[15px] text-[var(--color-text2)] max-w-[520px] leading-[1.7] mb-7"
           >
             CS graduate with hands-on{' '}
@@ -213,7 +215,7 @@ export default function Hero() {
 
           {/* Badges */}
           <motion.div
-            variants={staggerContainer}
+            variants={badgeStagger}
             initial="hidden"
             animate="visible"
             className="flex flex-wrap gap-2 mb-8"
@@ -238,10 +240,9 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div
-            variants={fadeUp}
-            custom={0.5}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...springMedium, delay: 0.65 }}
             className="flex flex-wrap gap-3 items-center"
           >
             <a
@@ -274,11 +275,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: terminal window — hides below lg breakpoint stacks above */}
         <div className="w-full lg:w-auto flex justify-center lg:justify-end">
           <TerminalWindow />
         </div>
-
       </div>
     </section>
   )
