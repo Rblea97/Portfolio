@@ -2,6 +2,25 @@ import type { Project } from '@/lib/types'
 
 export const projects: Project[] = [
   {
+    id: 'ridgeline-it',
+    name: 'Ridgeline IT Lab',
+    description:
+      'IT support home lab simulating on-prem and cloud infrastructure: Active Directory domain, Intune MDM device management, M365 tenant, PowerShell automation, and real help desk scenarios.',
+    techTags: ['Active Directory', 'Intune MDM', 'M365', 'PowerShell'],
+    roleBadge: 'IT Support',
+    roleBadgeColor: 'blue',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/Rblea97/ridgeline-it', variant: 'github' },
+    ],
+    featured: true,
+    previewLines: [
+      '$ ad-audit --domain RIDGELINE',
+      '[OK]  domain controller: online',
+      '[OK]  12 policies synced',
+      '[OK]  MDM enrollment: complete',
+    ],
+  },
+  {
     id: 'soc-lab',
     name: 'SOC Home Lab',
     description:
@@ -39,25 +58,6 @@ export const projects: Project[] = [
       '[WARN] SPF: FAIL  DKIM: PASS',
       '[ML]   confidence: 98.82% PHISHING',
       '[IOC]  T1566.001 → flagged',
-    ],
-  },
-  {
-    id: 'ridgeline-it',
-    name: 'Ridgeline IT Lab',
-    description:
-      'IT support home lab simulating on-prem and cloud infrastructure: Active Directory domain, Intune MDM device management, M365 tenant, PowerShell automation, and real help desk scenarios.',
-    techTags: ['Active Directory', 'Intune MDM', 'M365', 'PowerShell'],
-    roleBadge: 'IT Support',
-    roleBadgeColor: 'blue',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/Rblea97/ridgeline-it', variant: 'github' },
-    ],
-    featured: false,
-    previewLines: [
-      '$ ad-audit --domain RIDGELINE',
-      '[OK]  domain controller: online',
-      '[OK]  12 policies synced',
-      '[OK]  MDM enrollment: complete',
     ],
   },
   {
